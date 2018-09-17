@@ -25,6 +25,7 @@ public class ProductListActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             productList = bundle.getParcelableArrayList("productList");
+            getSupportActionBar().setTitle("Tag Results for " + bundle.getString("tag"));
         }
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, productList) {

@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                                             String tag = (String) adapterView.getItemAtPosition(i);
                                             List<Product> currProductList = tagsTable.get(tag);
                                             Intent intent = new Intent(MainActivity.this, ProductListActivity.class);
+                                            intent.putExtra("tag", tag);
                                             intent.putParcelableArrayListExtra("productList", (ArrayList<? extends Parcelable>) currProductList);
                                             startActivity(intent);
                                         }
@@ -131,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             JSONObject jsonProduct = products.getJSONObject(i);
             int inventoryCount = 0;
             JSONArray variants = jsonProduct.getJSONArray("variants");
-            Log.e("TESTING", String.valueOf(variants));
             for (int j = 0; j < variants.length(); ++j) {
                 JSONObject variant = variants.getJSONObject(j);
                 inventoryCount += variant.getInt("inventory_quantity");
